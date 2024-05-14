@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.get('/api/text', (req, res) => {
-  res.send('Hello from the backend!');
+app.get('/', (req, res) => {
+  res.send('Hello from ibrahim ihsan!');
 });
 
 app.listen(PORT, () => {
