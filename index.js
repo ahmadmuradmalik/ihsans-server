@@ -11,7 +11,7 @@ app.get('/FlipCoin', (req, res) => {
 });
 
 app.post('/SpeakToIbrahim', (req, res) => {
-    const {userInput} = req.body;
+    const {userInput} = req.body.userInput;
     return res.json({response: userInput})
 });
 
