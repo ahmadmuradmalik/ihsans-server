@@ -5,7 +5,7 @@ const { logger } = require('./logger');
 
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use CORS to allow requests from your frontend domain
 app.use(cors({
-    origin: 'https://dev-ihsan-client.vercel.app/'
+    origin: ['https://dev-ihsan-client.vercel.app']
+            // ,'http://localhost:3000']
   }));
 
 app.use((req, res, next) => {
