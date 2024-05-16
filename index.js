@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use CORS to allow requests from your frontend domain
 app.use(cors({
-    origin: 'https://ihsan-client.vercel.app'
+    origin: 'https://dev-ihsan-client.vercel.app/'
   }));
 
 app.use((req, res, next) => {
