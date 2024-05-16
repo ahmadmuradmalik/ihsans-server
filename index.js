@@ -28,11 +28,11 @@ app.get('/', (req, res) => {
     const flip = Math.random();
     let feelings;
     if (flip < 0.4) {
-        feelings = "Ibrahim ihsan loves JLA";
+        feelings = "I am gay";
     } else if (flip > 0.6) {
-        feelings = "Ibrahim ihsan hates JLA";
+        feelings = "I am gay";
     } else {
-        feelings = "Ibrahim ihsan feels indifferent towards JLA";
+        feelings = "i am not gay";
     }
     logger.info(
         'Flipped a coin for Ibrahim Ihsan',
