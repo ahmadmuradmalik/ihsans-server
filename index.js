@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const { logger } = require('./logger'); 
+
 
 
 const PORT = process.env.PORT || 5000;
@@ -15,11 +17,45 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: 'https://ihsan-client.vercel.app'
   }));
-  
+
+app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.url}`, { query: req.query, body: req.body });
+    next();
+});
 
 app.get('/', (req, res) => {
-  res.send('Hello from ibrahim ihsan!');
-});
+  try {
+    const flip = Math.random();
+    let feelings;
+    if (flip < 0.4) {
+        feelings = "Ibrahim ihsan loves JLA";
+    } else if (flip > 0.6) {
+        feelings = "Ibrahim ihsan hates JLA";
+    } else {
+        feelings = "Ibrahim ihsan feels indifferent towards JLA";
+    }
+    logger.info(
+        'Flipped a coin for Ibrahim Ihsan',
+         { flip, feelings });
+
+    return res.send(feelings);
+  }
+  catch (error) {
+    // logger.log({
+    //   level: 'error',
+    //   message: 'Error in flipping coin for ibrahim ihsan',
+    //   error
+    // })
+    logger.error(
+        'Error in flipping coin for Ibrahim Ihsan', 
+        { error }
+    );
+
+
+    res.status(500).json({error:`An error ocurred flipping a coin: ${error}`})
+  }
+})
+
 
 app.get('/FlipCoin', (req, res) => {
     return res.json({result: 1});
