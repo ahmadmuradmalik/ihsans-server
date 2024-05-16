@@ -1,5 +1,5 @@
 // logger.js
-import { format, createLogger, transports } from 'winston';
+const { format, createLogger, transports } = require('winston');
 
 // Determine log level based on the environment
 const determineLogLevel = () => {
